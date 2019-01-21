@@ -1,0 +1,101 @@
+#install Operation system
+-download image ubuntu_mate
+-write iso_image on SD card
+
+#first connection and setup System:
+-Connect HDMI cable and plug Monitor
+-Connect USB mouse and keyboard
+-Setup localization, time and unzip system utility's
+-Setup login and password (raspberry/iamrasp)
+
+#second connection
+-Share internet over wi-fi
+-Connect rp to internet hotspot and check
+	ping ya.ru
+-update packedge
+	sudo apt-get update
+
+#setup ssh connection over wi-fi
+-install	
+	sudo apt-get install ssh
+-add ssh demon to auto-loading at power on rp
+	sudo systemctl enable ssh.service
+-setup wi-fi adapter in mode HotSpot. [device(wlns0)]	
+
+#setup VNC - server
+-install vnc server
+	sudo apt-get install tightvncserver
+-start
+	vncserver :1 -geometry 800x600 -depth 16
+	remote pass: iamrasp
+	viewer pass: no
+-start vnc_viwer
+	Ctrl+d - destroy console window
+-stop vncserver
+	vncserver -kill:1
+-connect to rp
+	ip:5901
+
+#Camera check
+-plug on cable
+-setup OS camera
+	sudo raspi-config
+	Intefacing Options-> Camera->Enable(yes)
+	Menu->Finish
+
+#download GPIO python library
+	sudo pip3 install GPIO (python3)
+	sudo pip install GPIO (python2.7)
+	sudo pip install RPIO
+	sudo pip3 install RPIO
+
+#GPIO enable
+	sudo raspi-config
+	Intefacing Options->Remote GPIO->Enable(yes)->(ok)
+	Menu->Finish
+
+
+#Motor check
+	Left motor 
+		backward: enable A (P26) and in1 (P21) - high
+		forward:  enable A (P26) and in1 (P20) - high
+	right motor
+		backward: enable A (P6) and in1 (P12) - high
+		forward:  enable A (P6) and in1 (P13) - high
+
+#Photo_interrapter check
+	Left photo
+		P8 input
+	Right photo
+		p7 input
+	
+
+#install OpenCV
+-remoove installed packeges
+	sudo apt-get purge wolfram-engine
+	sudo apt-get purge libreoffice*
+	sudo apt-get clean
+	sudo apt-get autoremove
+-install Numpy
+	sudo pip install numpy
+-nstall OpenCv
+	sudo apt-get install python-opencv
+
+
+
+#Python check module
+1. check_motors
+2. check_photo
+3. check_camera
+
+library
+sudo apt-get install python-imaging
+sudo pip install rpi_ws281x
+sudo apt-get install git
+sudo apt-get install mc 
+git clone https://github.com/jgarff/rpi_ws281x
+
+sudo nano /etc/modules  
+i2c-bcm2708
+bcm2835-v4l2
+i2c-dev

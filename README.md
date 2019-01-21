@@ -1,1 +1,1 @@
-# opencv_tests
+This is test repository for work with AlphaBot 2.0
