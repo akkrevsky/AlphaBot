@@ -1,0 +1,12 @@
+iso download url:
+
+ssh and vnc server:
+	user: pi
+	pass: iamrasp
+
+WIFI:
+	SSID:    robot_1
+	pass:    iamrasp12345
+	channel: 7
+for change SSID rename file 
+and restart deamon
